@@ -55,8 +55,9 @@ public class HomeActivity extends AppCompatActivity {
         enterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String username = name.getText().toString() , userPassword = password.getText().toString();
+                Bundle bundle = new Bundle();
+                bundle.putString("email", username);
                 signIn(username, userPassword);
             }
         });
@@ -72,8 +73,6 @@ public class HomeActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent toChat = new Intent(HomeActivity.this, MainActivity.class);
-                            //startActivity(toChat);
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -103,7 +102,6 @@ public class HomeActivity extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    // Do something after 5s = 5000ms
                     startActivity(toChat);
                 }
             }, 4000);

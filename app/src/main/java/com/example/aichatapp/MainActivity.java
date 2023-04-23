@@ -27,10 +27,9 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
-    String[] messages = {"Pippo"};
     FragmentContainerView slideMenu;
     boolean slideMenuIsOpen;
-
+    String email;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if(slideMenuIsOpen){
@@ -48,10 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
         slideMenu = findViewById(R.id.slideMenu);
         slideMenu.setVisibility(View.INVISIBLE);
-
-        RecyclerView recyclerView = findViewById(R.id.recycleView);
-        MessageAdapter msg = new MessageAdapter(getApplicationContext(), messages);
-        recyclerView.setAdapter(msg);
 
         onSlideMenu();
     }

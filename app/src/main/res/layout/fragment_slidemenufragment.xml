@@ -16,11 +16,12 @@
         android:translationY="20sp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/profileBtn"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="414dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#0C0C0C"
+        android:onClick="toProfile"
         android:text="Profile"
         android:textAlignment="textStart"
         android:translationY="50sp"
@@ -46,16 +47,6 @@
         android:textAlignment="textStart"
         android:translationY="150sp" />
 
-    <Button
-        android:id="@+id/button7"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="414dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#0C0C0C"
-        android:text="Credits"
-        android:textAlignment="textStart"
-        android:translationY="200sp" />
-
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
@@ -63,6 +54,6 @@
         android:text="0.01 beta Tester Edition"
         android:textColor="#6C6A6A"
         android:translationX="12sp"
-        android:translationY="250sp" />
+        android:translationY="200sp" />
 
 </FrameLayout>
