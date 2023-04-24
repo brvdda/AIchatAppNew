@@ -12,8 +12,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView"
         android:layout_width="match_parent"
-        android:layout_height="636dp"
+        android:layout_height="681dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="51dp"
         android:layout_marginBottom="-1dp" />
 
     <androidx.fragment.app.FragmentContainerView
@@ -75,10 +77,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="335dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="653dp"
+        android:layout_marginStart="331dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="649dp"
         android:contentDescription="@string/app_name"
         android:onClick="onSlideMenu"
         app:srcCompat="@drawable/menu_icon" />
@@ -87,7 +89,7 @@
         android:id="@+id/slideMenu"
         android:name="com.example.aichatapp.slidemenufragment"
         android:layout_width="wrap_content"
-        android:layout_height="269dp"
+        android:layout_height="347dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -95,7 +97,7 @@
         android:layout_marginStart="192dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="462dp"
+        android:layout_marginBottom="384dp"
         tools:layout="@layout/fragment_slidemenufragment" />
 
 

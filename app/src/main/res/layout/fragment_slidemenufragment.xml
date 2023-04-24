@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1F262E">
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Menu"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#FFFFFF"
-        android:translationX="15sp"
-        android:translationY="20sp" />
 
     <Button
         android:id="@+id/profileBtn"
@@ -24,7 +15,7 @@
         android:onClick="toProfile"
         android:text="Profile"
         android:textAlignment="textStart"
-        android:translationY="50sp"
+        android:translationY="100sp"
         tools:ignore="DuplicateClickableBoundsCheck" />
 
     <Button
@@ -35,7 +26,7 @@
         android:backgroundTint="#0C0C0C"
         android:text="Help"
         android:textAlignment="textStart"
-        android:translationY="100sp" />
+        android:translationY="150sp" />
 
     <Button
         android:id="@+id/button6"
@@ -45,7 +36,7 @@
         android:backgroundTint="#0C0C0C"
         android:text="Settings"
         android:textAlignment="textStart"
-        android:translationY="150sp" />
+        android:translationY="200sp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -54,6 +45,32 @@
         android:text="0.01 beta Tester Edition"
         android:textColor="#6C6A6A"
         android:translationX="12sp"
-        android:translationY="200sp" />
+        android:translationY="250sp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationX="10sp"
+        android:translationY="10sp"
+        app:srcCompat="@drawable/ic_form_people" />
+
+    <TextView
+        android:id="@+id/emailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="email"
+        android:textColor="#808080"
+        android:translationX="85sp"
+        android:translationY="30sp" />
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Online"
+        android:textColor="#34EA1E"
+        android:translationX="85sp"
+        android:translationY="50sp" />
 
 </FrameLayout>
