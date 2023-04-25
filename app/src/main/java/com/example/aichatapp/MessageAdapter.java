@@ -3,6 +3,8 @@ package com.example.aichatapp;
 import android.app.Activity;
 import android.app.LauncherActivity;
 import android.content.Context;
+import android.graphics.Color;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +35,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ChatView
     private DatabaseReference dbReference;
     private String displayName;
     private ArrayList<DataSnapshot> dataSnapshots;
+    private FirebaseAuth mAuth;
 
     private ChildEventListener mListener = new ChildEventListener() {
         @Override
@@ -79,6 +83,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ChatView
             super(itemView);
             message = itemView.findViewById(R.id.userMessage);
             Auth = itemView.findViewById(R.id.nameText);
+            mAuth = FirebaseAuth.getInstance();
             layoutParams = (FrameLayout.LayoutParams) Auth.getLayoutParams();
         }
     }
@@ -86,6 +91,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ChatView
     @Override
     public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         View v = inflater.inflate(R.layout.usermessage_item, parent, false);
         ChatViewHolder ch = new ChatViewHolder(v);
 
@@ -98,6 +104,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ChatView
         Message msg = snapshot.getValue(Message.class);
         holder.message.setText(msg.getMessage());
         holder.Auth.setText(msg.getAuth());
+
+        boolean sonoIo = msg.getAuth().equals(displayName);
+        setChatItemStyle(sonoIo, holder);
     }
 
     @Override
@@ -107,6 +116,22 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ChatView
 
     public void onClean(){
         dbReference.removeEventListener(mListener);
+    }
+
+    private void setChatItemStyle(boolean sonoIo, ChatViewHolder holder){
+        if(sonoIo){
+            holder.layoutParams.gravity = Gravity.END;
+            holder.Auth.setTextColor(Color.WHITE);
+            holder.message.setBackgroundResource(R.drawable.in_msg_bg);
+            holder.Auth.setText("Tu");
+        } else {
+            holder.layoutParams.gravity = Gravity.START;
+            holder.Auth.setTextColor(Color.WHITE);
+            holder.message.setBackgroundResource(R.drawable.out_msg_bg);
+        }
+
+        holder.Auth.setLayoutParams(holder.layoutParams);
+        holder.message.setLayoutParams(holder.layoutParams);
     }
 
 

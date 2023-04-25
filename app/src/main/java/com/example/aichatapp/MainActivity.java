@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentContainerView;
@@ -58,11 +59,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
         mAuth = FirebaseAuth.getInstance();
+        setTitle(mAuth.getCurrentUser().getDisplayName());
         dbReference = FirebaseDatabase.getInstance().getReference();
         slideMenu = findViewById(R.id.slideMenu);
         slideMenu.setVisibility(View.INVISIBLE);
         initUI();
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 

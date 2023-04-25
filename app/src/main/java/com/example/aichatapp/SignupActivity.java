@@ -3,6 +3,7 @@ package com.example.aichatapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,12 +18,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignupActivity extends AppCompatActivity {
 
     TextView login;
     EditText nameInput;
+    TextView successfulText, signUpText, signUptextBtn;
     EditText passwordInput, confirmPasswordInput, emailInput;
+    Button signBtn;
     private FirebaseAuth mAuth;
 
     @Override
@@ -47,12 +51,19 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void initUI(){
+
         nameInput = findViewById(R.id.inputName);
+        successfulText = findViewById(R.id.successfulText);
+        successfulText.setVisibility(View.INVISIBLE);
         emailInput = findViewById(R.id.emailInput);
         passwordInput = findViewById(R.id.InputPassword);
         confirmPasswordInput = findViewById(R.id.confermaPassword);
+        signBtn = findViewById(R.id.SignUpButton);
+        signUpText = findViewById(R.id.notAccountText);
+        signUptextBtn = findViewById(R.id.SignUpBtn);
     }
-    private void createAccount(String email, String password) {
+
+    private void createAccount(String email, String password, String name) {
         // [START create_user_with_email]
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -62,6 +73,7 @@ public class SignupActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("accountCreate: ", "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            setNome(name);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("accountCreate: ", "createUserWithEmail:failure", task.getException());
@@ -73,6 +85,20 @@ public class SignupActivity extends AppCompatActivity {
         // [END create_user_with_email]
     }
 
+    private void setNome(String nome){
+        FirebaseUser username = mAuth.getCurrentUser();
+        UserProfileChangeRequest changeRequest = new UserProfileChangeRequest.Builder().setDisplayName(nome).build();
+        username.updateProfile(changeRequest).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Log.i("setNome","nome caricato con successo");
+                }else if(!task.isSuccessful()){
+                    Log.i("setNome","nome non caricato con successo");
+                }
+            }
+        });
+    }
     public void toLogin(){
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,8 +127,17 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Password non valida", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    createAccount(emailInput.getText().toString(), passwordInput.getText().toString());
+                    createAccount(emailInput.getText().toString(), passwordInput.getText().toString(), nameInput.getText().toString());
                     Toast.makeText(getApplicationContext(), "Accesso riuscito!", Toast.LENGTH_SHORT).show();
+                    login.setVisibility(View.INVISIBLE);
+                    nameInput.setVisibility(View.INVISIBLE);
+                    passwordInput.setVisibility(View.INVISIBLE);
+                    confirmPasswordInput.setVisibility(View.INVISIBLE);
+                    emailInput.setVisibility(View.INVISIBLE);
+                    successfulText.setVisibility(View.VISIBLE);
+                    signBtn.setVisibility(View.INVISIBLE);
+                    signUpText.setVisibility(View.INVISIBLE);
+                    signUptextBtn.setVisibility(View.INVISIBLE);
                 }
             }
         });

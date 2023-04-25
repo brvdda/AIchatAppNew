@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="AI Helper"
+        android:text="ChatApp"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#FFFFFF" />

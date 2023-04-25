@@ -3,46 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="64dp">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="140dp"
-        android:layout_height="50dp"
-        app:cardBackgroundColor="#1717A5"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="0dp"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.946"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
-        tools:ignore="MissingConstraints">
+    <TextView
+        android:id="@+id/userMessage"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:maxWidth="260dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="15dp"
+        android:paddingRight="12dp"
+        android:text="message"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:translationY="20sp" />
 
-        <TextView
-            android:id="@+id/userMessage"
-            android:layout_width="104dp"
-            android:layout_height="wrap_content"
-            android:maxWidth="260dp"
-            android:paddingLeft="12dp"
-            android:paddingTop="15dp"
-            android:paddingRight="12dp"
-            android:text="message"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/nameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="55dp"
-            android:text="nameText"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="#FFFFFF" />
-    </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingTop="2sp"
+        android:paddingRight="15dp"
+        android:text="nameText"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp" />
 
 </FrameLayout>

@@ -3,11 +3,11 @@ package com.example.aichatapp;
 public class Message {
 
     private String message;
-    private String Auth;
+    private String auth;
 
     public Message(String message, String auth) {
         this.message = message;
-        Auth = auth;
+        this.auth = auth;
     }
 
     public Message() {
@@ -19,6 +19,6 @@ public class Message {
     }
 
     public String getAuth() {
-        return Auth;
+        return auth;
     }
 }
